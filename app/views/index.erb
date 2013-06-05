@@ -1,3 +1,4 @@
+
 <div class="container">
   <h1>Welcome to our Pseudo-Bitly Site!</h1>
 
@@ -5,5 +6,12 @@
 <input type="text" name="original" placeholder="enter your url here">
   <input type="submit" value="Get Short Url">
 </form>
+
+<%if @url && !@url.valid?%>
+  <%@url.errors.full_messages.each do |message|%>
+    <% message = "Invalid URL" if message = "Original is invalid" %>
+    <p class="error"><%=message%></p>
+  <%end%>
+<%end%>
   
 </div>
